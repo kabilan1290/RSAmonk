@@ -1,5 +1,6 @@
 import os
-from sympy import factorint
+from sympy import *
+from gmpy2 import *
 from Crypto.Util.number import *
 intro="figlet -f slant \"RSAmonk\" | lolcat"
 def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
@@ -12,16 +13,19 @@ print("\n")
 
 prGreen("1.n,p or q,e,c is given - Simple RSA")
 prGreen("2.n,e,c is given - Factorization")
+prGreen("3.e=3,n,c is given - Cube-Root Attack")
+prGreen("4.Factorization for Sexy,Cousin and Twin primes")
+prGreen("5.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
 
 
 a= int(input(""))
 
-def decrypt(p,q,c,n,e)
+def decrypt(p,q,c,n,e):
 	phi= (p-1)*(q-1)
 	d = inverse(e,phi)
 	m = pow(c,d,n)
 	flag=(long_to_bytes(m))
-	prGreen("Here we go "+str(flag))
+	prGreen("Here we go "+str(flag,'utf-8'))
 
 if(a==2):
 	prGreen("Give me n : ")
@@ -33,7 +37,6 @@ if(a==2):
 	p,q=factorint(n)
 	print("\n")
 	decrypt(p,q,c,n,e)
-
 elif(a==1):
 	prGreen("Give me n : ")
 	n = int(input(""))
@@ -46,3 +49,39 @@ elif(a==1):
 	print("\n")
 	q = n//p
 	decrypt(p,q,c,n,e)
+elif(a==3):
+	prGreen("Give me c : ")
+	c = int(input(""))
+	e=3
+	m = iroot(c,e)
+	flag=(long_to_bytes(m[0]))
+	prGreen("Here we go : "+str(flag,'utf-8'))
+elif(a==4):
+	prGreen("1.SexyPrime - Differs by six")
+	prGreen("2.CousinPrime - Differs by four")
+	prGreen("3.TwinPrime - Differs by two")
+	x = symbols('x')
+	b = int(input(""))
+	if(b==1):
+		prGreen("Give me n :")
+		n = int(input(""))
+		expr = x*(x+6)-n
+		m=solve(expr)
+		prGreen("The factors of "+str(n)+" are "+str(m[0])+" and "+str(m[1]))
+	elif(b==2):
+		prGreen("Give me n :")
+		n = int(input(""))
+		expr = x*(x+4)-n
+		m=solve(expr)
+		prGreen(m)
+		prGreen("The factors of "+str(n)+" are "+str(m[0])+" and "+str(m[1]))
+
+
+	else:
+		prGreen("Give me n :")
+		n = int(input(""))
+		expr = x*(x+2)-n
+		m=solve(expr)
+		prGreen(m)
+		prGreen("The factors of "+str(n)+" are "+str(m[0])+" and "+str(m[1]))
+

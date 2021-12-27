@@ -27,6 +27,25 @@ def decrypt(p,q,c,n,e):
 	flag=(long_to_bytes(m))
 	prGreen("Here we go "+str(flag,'utf-8'))
 
+def algofactor(n,e,d):
+	k=d*e-1
+	t = k
+	primes = [2,3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+	prime_length = len(primes)
+	for i in range(0,prime_length):
+		while(t%2==0):
+			t = t/2
+			g = prime_length[i]
+			x = g**t % n 
+			x = x.rstrip("L")
+			if(x!=1):
+				print(x)
+				exit()
+			else:
+				continue
+
+
+
 if(a==2):
 	prGreen("Give me n : ")
 	n = int(input(""))
@@ -85,3 +104,5 @@ elif(a==4):
 		prGreen(m)
 		prGreen("The factors of "+str(n)+" are "+str(m[0])+" and "+str(m[1]))
 
+elif(a==5):
+	os.system("python algofactor.py")

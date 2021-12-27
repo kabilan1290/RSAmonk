@@ -16,7 +16,7 @@ prGreen("2.n,e,c is given - Factorization")
 prGreen("3.e=3,n,c is given - Cube-Root Attack")
 prGreen("4.Factorization for Sexy,Cousin and Twin primes")
 prGreen("5.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
-
+prGreen("6.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
 
 a= int(input(""))
 
@@ -106,3 +106,5 @@ elif(a==4):
 
 elif(a==5):
 	os.system("python algofactor.py")
+elif(a==6):
+	os.system("python3 crt.py")

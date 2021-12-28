@@ -2,6 +2,9 @@ import os
 from sympy import *
 from gmpy2 import *
 from Crypto.Util.number import *
+import multiprocessing
+import time
+
 intro="figlet -f slant \"RSAmonk\" | lolcat"
 def prGreen(skk): print("\033[92m {}\033[00m" .format(skk))
 
@@ -11,12 +14,14 @@ print("--------------------------------------------------")
 print("              Author: Game0v3r     ")
 print("\n")
 
+prGreen("0.n,c,d is given- Direct Plaintext")
 prGreen("1.n,p or q,e,c is given - Simple RSA")
-prGreen("2.n,e,c is given - Factorization")
-prGreen("3.e=3,n,c is given - Cube-Root Attack")
-prGreen("4.Factorization for Sexy,Cousin and Twin primes")
-prGreen("5.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
-prGreen("6.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
+prGreen("2.n,e,c is given - Factorization by factorint")
+prGreen("3.n,e,c is given - Factorization by factordb")
+prGreen("4.e=3,n,c is given - Cube-Root Attack")
+prGreen("5.Factorization for Sexy,Cousin and Twin primes")
+prGreen("6.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
+prGreen("7.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
 
 a= int(input(""))
 
@@ -44,6 +49,14 @@ def algofactor(n,e,d):
 			else:
 				continue
 
+def factor(n,e,c):
+	print("\n")
+	p,q =factorint(n)
+	phi= (p-1)*(q-1)
+	d = inverse(e,phi)
+	m = pow(c,d,n)
+	flag=(long_to_bytes(m))
+	prGreen("Here we go "+str(flag,'utf-8'))
 
 
 if(a==2):
@@ -53,9 +66,15 @@ if(a==2):
 	e = int(input(""))
 	prGreen("Give me c : ")
 	c = int(input(""))
-	p,q=factorint(n)
+	x = multiprocessing.Process(target=factor, name="Factor", args=(n,e,c,))
+	x.start()
+	time.sleep(10)
+	x.terminate()
+	x.join()
 	print("\n")
-	decrypt(p,q,c,n,e)
+	prGreen("I did it right? If not try other methods.")
+
+
 elif(a==1):
 	prGreen("Give me n : ")
 	n = int(input(""))
@@ -68,14 +87,17 @@ elif(a==1):
 	print("\n")
 	q = n//p
 	decrypt(p,q,c,n,e)
+
 elif(a==3):
+	os.system("python3 factordb_file.py")
+elif(a==4):
 	prGreen("Give me c : ")
 	c = int(input(""))
 	e=3
 	m = iroot(c,e)
 	flag=(long_to_bytes(m[0]))
 	prGreen("Here we go : "+str(flag,'utf-8'))
-elif(a==4):
+elif(a==5):
 	prGreen("1.SexyPrime - Differs by six")
 	prGreen("2.CousinPrime - Differs by four")
 	prGreen("3.TwinPrime - Differs by two")
@@ -104,7 +126,27 @@ elif(a==4):
 		prGreen(m)
 		prGreen("The factors of "+str(n)+" are "+str(m[0])+" and "+str(m[1]))
 
-elif(a==5):
-	os.system("python algofactor.py")
 elif(a==6):
+	os.system("python algofactor.py")
+elif(a==7):
 	os.system("python3 crt.py")
+
+elif(a==0):
+	prGreen("Give me n : ")
+	n = int(input(""))
+	prGreen("Give me d : ")
+	d = int(input(""))
+	prGreen("Give me c : ")
+	c = int(input(""))
+	m = pow(c,d,n)
+	flag=(long_to_bytes(m))
+	prGreen("Here we go "+str(flag,'utf-8'))
+
+
+
+
+
+
+
+
+

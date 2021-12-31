@@ -22,6 +22,7 @@ prGreen("4.e=3,n,c is given - Cube-Root Attack")
 prGreen("5.Factorization for Sexy,Cousin and Twin primes")
 prGreen("6.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
 prGreen("7.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
+prGreen("8.e1,e2,c1,c2,n - Common modulus attack") 
 
 a= int(input(""))
 
@@ -141,6 +142,8 @@ elif(a==0):
 	m = pow(c,d,n)
 	flag=(long_to_bytes(m))
 	prGreen("Here we go "+str(flag,'utf-8'))
+elif(a==8):
+	os.system("python3 commonmod.py")
 
 
 

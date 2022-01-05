@@ -24,7 +24,7 @@ prGreen("6.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.a
 prGreen("7.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
 prGreen("8.e1,e2,c1,c2,n - Common modulus attack") 
 prGreen("9.n,e,c,dp or dq - Chinese Remainder Theorem") 
-
+prGreen("10.others")
 a= int(input(""))
 
 def decrypt(p,q,c,n,e):
@@ -147,7 +147,8 @@ elif(a==8):
 	os.system("python3 commonmod.py")
 elif(a==9):
 	os.system("python3 dp.py")
-
+elif(a==10):
+	os.system("python3 others.py")
 
 
 

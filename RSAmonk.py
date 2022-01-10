@@ -23,8 +23,9 @@ prGreen("5.Factorization for Sexy,Cousin and Twin primes")
 prGreen("6.n,d,e is given - Algorthmic factorization") #https://www.di-mgt.com.au/rsa_factorize_n.html
 prGreen("7.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
 prGreen("8.e1,e2,c1,c2,n - Common modulus attack") 
-prGreen("9.n,e,c,dp or dq - Chinese Remainder Theorem") 
-prGreen("10.others")
+prGreen("9.n,e,c,dp or dq - Chinese Remainder Theorem")
+prGreen("10.c,e,dp,dq -p,q recovery")
+prGreen("11.others")
 a= int(input(""))
 
 def decrypt(p,q,c,n,e):
@@ -148,6 +149,8 @@ elif(a==8):
 elif(a==9):
 	os.system("python3 dp.py")
 elif(a==10):
+	os.system("python dpdq.py")
+elif(a==11):
 	os.system("python3 others.py")
 
 

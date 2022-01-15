@@ -25,7 +25,7 @@ prGreen("7.n1,n2,n3,c1,c2,c3,e=3 - Hastad Broadcast attack")
 prGreen("8.e1,e2,c1,c2,n - Common modulus attack") 
 prGreen("9.n,e,c,dp or dq - Chinese Remainder Theorem")
 prGreen("10.c,e,dp,dq -p,q recovery")
-prGreen("11.n,e,signature - RSA signature decryption")
+prGreen("11.n,e,signature - RSA signature decryption") #https://cryptobook.nakov.com/digital-signatures/rsa-signatures
 prGreen("12.others")
 a= int(input(""))
 

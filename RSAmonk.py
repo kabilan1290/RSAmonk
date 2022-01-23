@@ -27,7 +27,8 @@ prGreen("9.n,e,c,dp or dq        - Chinese Remainder Theorem")
 prGreen("10.c,e,dp,dq            - p,q recovery")
 prGreen("11.n,e,signature        - RSA signature decryption") #https://cryptobook.nakov.com/digital-signatures/rsa-signatures
 prGreen("12.e=2,ct,n             - rabin crypto system")
-prGreen("13.others")
+prGreen("13.e=3,ct,n,padding     - Nullbyte padding Decryption")
+prGreen("14.others")
 a= int(input(""))
 
 def decrypt(p,q,c,n,e):
@@ -164,8 +165,10 @@ elif(a==11):
 	prGreen("Here we go "+str(flag,'utf-8'))
 elif(a==12):
 	os.system("python rabin.py")
-
 elif(a==13):
+	os.system("python3 nullbyte.py")
+
+elif(a==14):
 	os.system("python3 others.py")
 
 

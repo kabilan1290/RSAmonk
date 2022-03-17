@@ -28,7 +28,8 @@ prGreen("10.c,e,dp,dq            - p,q recovery")
 prGreen("11.n,e,signature        - RSA signature decryption") #https://cryptobook.nakov.com/digital-signatures/rsa-signatures
 prGreen("12.e=2,ct,n             - rabin crypto system")
 prGreen("13.e=3,ct,n,padding     - Nullbyte padding Decryption")
-prGreen("14.others")
+prGreen("14.n,c                  - Pollard's P-1 factorization")
+prGreen("15.others")
 a= int(input(""))
 
 def decrypt(p,q,c,n,e):
@@ -167,8 +168,9 @@ elif(a==12):
 	os.system("python rabin.py")
 elif(a==13):
 	os.system("python3 nullbyte.py")
-
 elif(a==14):
+	os.system("python3 pollard_p-1_factor.py")
+elif(a==15):
 	os.system("python3 others.py")
 
 
